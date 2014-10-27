@@ -10,13 +10,27 @@
 
 \begin{document}
 %!tikz source begin
-\begin{tikzpicture}[font=\sffamily\tiny]
+\begin{tikzpicture}
+[font=\sffamily\tiny]
 \usetikzlibrary{matrix,shapes,arrows,fit}
 \usetikzlibrary{matrix,positioning,fit,calc}
-
+ \pgfarrowsdeclare{arcs}{arcs}{...} 
+{ 
+  \pgfsetdash{}{0pt} % do not dash 
+  \pgfsetroundjoin   % fix join 
+  \pgfsetroundcap    % fix cap 
+  \pgfpathmoveto{\pgfpoint{-10pt}{10pt}} 
+  \pgfpatharc{180}{270}{10pt} 
+  \pgfpatharc{90}{180}{10pt} 
+  \pgfusepathqstroke 
+}
+ \draw[-arcs,line width=1pt] (-1.4,5.9) -- (-1.4,5.7); 
 \draw [line width=3pt, line cap=round, dash pattern=on 0pt off 2\pgflinewidth] (-2,6) -- (2.7,6);
 \node[draw] at (-0.2,6.3) {Window Size = 40};
 \draw [-to,shorten >=-1pt,gray,ultra thick] (4,-1) -- (3.5,-1.7); 
+\node[font=\fontsize{5}{5}\selectfont,anchor=north,text width=6cm] (note1) at (2,5.6) {
+   Items enter the stream here
+   .};
 \node[font=\fontsize{5}{5}\selectfont,anchor=north,text width=6cm] (note1) at (7,0) {
    The difference between the latest\\
    timestamp(105) and the oldest(65)\\
