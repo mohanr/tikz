@@ -1,0 +1,173 @@
+%!tikz editor 1.0
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[graphics, active, tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+%!tikz preamble begin
+
+%!tikz preamble end
+
+
+\begin{document}
+%!tikz source begin
+\begin{tikzpicture}[font=\sffamily\tiny]
+\usetikzlibrary{matrix,shapes,arrows,fit}
+\usetikzlibrary{matrix,positioning,fit,calc}
+
+\draw [line width=3pt, line cap=round, dash pattern=on 0pt off 2\pgflinewidth] (-2,6) -- (2.7,6);
+\node[draw] at (-0.2,6.3) {Window Size = 40};
+\draw [-to,shorten >=-1pt,gray,ultra thick] (4,-1) -- (3.5,-1.7); 
+\node[font=\fontsize{5}{5}\selectfont,anchor=north,text width=6cm] (note1) at (7,0) {
+   The difference between the latest\\
+   timestamp(105) and the oldest(65)\\
+   equals the windows size(40). So\\
+   the oldest bucket is dropped
+   .};
+\node[font=\fontsize{5}{5}\selectfont,anchor=north,text width=6cm] (note1) at (7,3) {
+   Combine any two adjacent buckets of\\
+   the same size, replace them by one\\
+   bucket of twice the size. The timestamp\\
+   of the new bucket is the\\   timestamp of the rightmost (later in time)\\
+   of the two buckets.
+   .};
+\matrix [matrix of nodes] (m)
+{
+End Time &100 & 98 & 95 & 92  &87 & 80 & 65\\
+Size  &         1    &  1  & 2   &  2  &  4  &  8  &  8\\
+End Time  &101 & 100 & 98  &95 & 92  &87 & 80 & 65\\
+Size    &         1   &   1    & 1  & 2   &  2  &  4  &  8  &  8\\
+End Time  &101  &100 & 95 & 92 & 87 & 80  &65\\
+Size       &         1     &    2      &   2      &  2     &  4     &  8      & 8\\
+End Time    & 101     &100     &95     &87    & 80     &65\\
+Size           &     1      &   2      &   4     &  4      & 8      & 8\\
+End Time     & 102 & 101  &100 &   95  &87 & 80 & 65\\
+Size         &         1  &    1  &    2   &   4   & 4  &  8  &  8\\
+End Time     & 103 & 102  &101  &100  &  95 & 87 & 80  &65\\ 
+Size     &          1  &    1   &   1   &   2  &    4  &  4   & 8   & 8\\
+End Time     & 103  &102 & 100  &  95 & 87 & 80 & 65\\
+Size              &    1    &  2   &   2   &   4   & 4   & 8  &  8\\
+End Time     & 104  &103 & 102  &100  &  95  &87  &80  &65\\
+Size       &           1  &    1   &   2  &    2  &    4 &   4   & 8  &  8\\
+End Time     & 105  &104  &103  &102  &100   & 95 & 87 & 80 & 65\\
+Size     &          1  &   1    &  1   &   2  &    2   &   4  &  4  &  8 & 8\\
+End Time & 105  &104  &102  &100   & 95 & 87  &80\\
+Size       &           1    & 2   &   2   &   2   &   4  &  4   & 8 \\
+End Time     & 105  &104  &102  &  95  &87 & 80\\
+Size     &             1  &   2   &   4   &    4  &  4  &  8  \\
+End Time     & 105 & 104  &102  &  95 & 80\\
+Size      &            1  &   2    &  4   &    8   & 8 \\
+\\};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-1-2) (m-2-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-3-2) (m-4-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-5-2) (m-6-2)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-5-4) (m-6-4)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-6-4) (m-6-5)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-11-3) (m-12-3)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-12-3) (m-12-4)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-17-3) (m-18-3)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-18-3) (m-18-4)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-19-4) (m-20-4)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-20-4) (m-20-5)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-21-4) (m-22-4)
+]{};
+\node[draw=violet!99,font=\sffamily\footnotesize,inner sep=0pt,thick,rounded corners,
+fit=(m-22-4) (m-22-5)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-7-2) (m-8-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-9-2) (m-10-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-11-2) (m-12-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-13-2) (m-14-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-15-2) (m-16-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-17-2) (m-18-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-19-2) (m-20-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-21-2) (m-22-2)
+]{};
+\node[draw=cyan,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-23-2) (m-24-2)
+]{};
+
+\node[draw=blue,font=\sffamily\footnotesize,inner sep=0pt,ultra thick,dashed,rounded corners,
+fit=(m-17-10) (m-18-10)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-1-3) (m-2-8)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-3-3) (m-4-9)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-5-3) (m-6-8)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-7-3) (m-8-7)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-9-3) (m-10-8)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-11-3) (m-12-9)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-13-3) (m-14-8)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-15-3) (m-16-9)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-17-3) (m-18-9)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-19-3) (m-20-8)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-21-3) (m-22-7)
+]{};
+\node[draw=orange,inner sep=0pt,rounded corners,
+fit=(m-23-3) (m-24-6)
+]{};
+
+
+
+\end{tikzpicture}
+%!tikz source end
+
+
+\end{document}
