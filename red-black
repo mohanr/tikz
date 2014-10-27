@@ -1,0 +1,42 @@
+%!tikz editor 1.0
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[graphics, active, tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%!tikz preamble begin
+
+%!tikz preamble end
+
+
+\begin{document}
+%!tikz source begin
+\begin{tikzpicture}
+[->,>=stealth',level/.style={sibling distance = 5cm/#1,
+  level distance = 1.5cm}] 
+\node [arn_n][label=360:$2$][label=150:$blackheight\mathcal{=}2$] {3}
+    child{ node [arn_n] [label=360:$1$]{2} 
+				child{ node [arn_r] {1}
+ 				child{ node [arn_nil][label=360:$0$] {NIL}}
+ 				child{ node [arn_nil] {NIL}}
+				}
+ 				child{ node [arn_nil] {NIL}}
+    }
+    child{ node [arn_r] {40}
+							child{ node [arn_n] {4}
+							child{ node [arn_nil] {NIL}}
+							child{ node [arn_nil] {NIL}}
+							}
+							child{ node [arn_n] {42}
+							child{ node [arn_r] {41}
+							child{ node [arn_nil] {NIL}}
+							child{ node [arn_nil] {NIL}}
+							}
+							child{ node [arn_nil] {NIL}}
+}
+	}
+; 
+\end{tikzpicture}
+%!tikz source end
+
+\end{document}
