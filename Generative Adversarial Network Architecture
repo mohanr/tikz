@@ -6,6 +6,10 @@
 \definecolor{carolinablue}{rgb}{0.6, 0.73, 0.89}
 \definecolor{ceruleanblue}{rgb}{0.16, 0.32, 0.75}
 \definecolor{languidlavender}{rgb}{0.84, 0.79, 0.87}
+\definecolor{tan}{rgb}{0.82, 0.71, 0.55}
+\definecolor{tearose(rose)}{rgb}{0.96, 0.76, 0.76}
+\definecolor{wisteria}{rgb}{0.79, 0.63, 0.86}
+\definecolor{skymagenta}{rgb}{0.81, 0.44, 0.69}
 
 \tikzset{
   laser beam action/.style={
@@ -130,10 +134,15 @@
 \makeatother
 
 \tikzcuboid{dimx=1,dimy=20,dimz=30,shiftx=100};
+
 \tikzcuboid{dimx=1,dimy=3,dimz=3,shiftx=150,,shifty=-99,front/.style={draw=blue!75!black,fill=languidlavender!25!white},top/.style={draw=blue!75!black,fill=languidlavender!25!white},right/.style={draw=blue!75!black,fill=languidlavender!25!white}};
 
-\path[laser beam=ceruleanblue] (-2.61,-0.396) -- (4.7,-3.7);
-\path[laser beam=ceruleanblue] (-2.61,-1.3) -- (4.7,-3.7);
-\path[laser beam=ceruleanblue] (-1.91,-0.7) -- (4.7,-3.7);
-\path[laser beam=ceruleanblue] (-1.9,0.2) -- (4.7,-3.7);
+\tikzcuboid{dimx=1,dimy=3,dimz=3,shiftx=180,,shifty=-69,front/.style={draw=skymagenta!75!white,fill=wisteria!25!white},top/.style={draw=skymagenta!75!skymagenta,fill=wisteria!25!white},right/.style={draw=skymagenta!75!skymagenta,fill=wisteria!25!white}};
+
+\path[laser beam=ceruleanblue] (-2.61,-0.396) -- (4.7,-3.2);
+\path[laser beam=ceruleanblue] (-2.61,-1.3) -- (4.7,-4.1);
+\path[laser beam=ceruleanblue] (-1.91,-0.7) -- (5.6,-3.5);
+\path[laser beam=ceruleanblue] (-1.9,0.2) -- (5.2,-2.6);
+
+\tikzcuboid{dimx=1,dimy=3,dimz=3,shiftx=-63.54,shifty=-19.37,front/.style={draw=blue!75!black,fill=tan!25!white},top/.style={draw=blue!75!black,fill=tan!25!white},right/.style={draw=blue!75!black,fill=tan!25!white}};
 
